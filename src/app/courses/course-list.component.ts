@@ -28,6 +28,16 @@ export class CourseListComponent implements OnInit{
         });
         
     }
+
+    deleteById(courseId: number): void {
+        this.courseService.deleteById(courseId).subscribe({
+            next: () => {
+                console.log('delete with success');
+                this.retrieveAll();
+            },
+            error: err => console.log('error', err)
+        })
+    }
     
 
 set filter(value: string){
